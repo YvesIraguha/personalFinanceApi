@@ -9,8 +9,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: { models },
-  playground: true,
-  introspection: true
+  playground: true
 });
 const app = express();
 server.applyMiddleware({ app });
