@@ -1,0 +1,51 @@
+{
+  "name": "mybudget-backend",
+  "version": "1.0.0",
+  "description": "The application for helping users to record their expenses on daily basis",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest test",
+    "build": "babel src --out-dir ./dist --source-maps",
+    "serve": "node ./dist/server.js",
+    "dev": "nodemon --exec babel-node ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YvesIraguha/MyBudget-backend.git"
+  },
+  "keywords": [
+    "graphql",
+    "node",
+    "express",
+    "budget"
+  ],
+  "author": "iraguhaivos@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YvesIraguha/MyBudget-backend/issues"
+  },
+  "homepage": "https://github.com/YvesIraguha/MyBudget-backend#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.8.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "pg": "^7.12.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}
