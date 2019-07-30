@@ -4,7 +4,7 @@ const resolvers = {
             return models.Expense.findAll()
         },
         async  getExpense(root,{id},{models}){
-            return models.Expense.findById(id)
+            return models.Expense.findOne({where:{id}})
         }
     
     },
@@ -16,3 +16,5 @@ const resolvers = {
         }
     }
 }
+
+export default resolvers;

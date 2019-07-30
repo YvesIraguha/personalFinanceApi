@@ -4,8 +4,8 @@ const typeDefs = gql`
 type Expense {
     id:String
     type:String
-    quantity:Integer
-    price:Integer
+    quantity:Int
+    price:Int
 }
 type Query {
     getAllExpenses:[Expense!]!
@@ -13,7 +13,7 @@ type Query {
 }
 
 type Mutation {
-    createExpense(type:String!,quantity:Integer,price:Integer!):Expense!
+    createExpense(type:String!,quantity:Int,price:Int!):Expense!
 }
 `
 
