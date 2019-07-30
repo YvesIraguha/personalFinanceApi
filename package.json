@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest test",
-    "build": "babel src --out-dir ./dist --source-maps",
+    "dev:build": "babel src --out-dir ./dist --source-maps",
     "start": "node ./dist/server.js",
     "dev": "nodemon --exec babel-node ./src/server.js"
   },
