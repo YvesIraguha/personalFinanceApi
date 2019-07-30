@@ -1,5 +1,4 @@
 import express from "express";
-import "@babel/polyfill";
 import { ApolloServer } from "apollo-server-express";
 import dotenv from "dotenv";
 import typeDefs from "./api/schema";
