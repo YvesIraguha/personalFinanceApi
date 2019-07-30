@@ -5,7 +5,13 @@ import typeDefs from "./api/schema";
 import resolvers from "./api/resolvers";
 import models from "../models";
 
-const server = new ApolloServer({ typeDefs, resolvers, context: { models } });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: { models },
+  playground: true,
+  introspection: true
+});
 const app = express();
 server.applyMiddleware({ app });
 
