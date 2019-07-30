@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest test",
     "build": "babel src --out-dir ./dist --source-maps",
-    "serve": "node ./dist/server.js",
+    "start": "node ./dist/server.js",
     "dev": "nodemon --exec babel-node ./src/server.js"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "eslint": "^6.1.0",
