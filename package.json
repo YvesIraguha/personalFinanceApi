@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest test",
     "build": "babel src --out-dir ./dist --source-maps",
-    "serve": "node ./dist/server.js",
+    "start": "node ./dist/server.js",
     "dev": "nodemon --exec babel-node ./src/server.js"
   },
   "repository": {
@@ -27,17 +27,22 @@
   "homepage": "https://github.com/YvesIraguha/MyBudget-backend#readme",
   "dependencies": {
     "apollo-server-express": "^2.8.0",
+    "axios": "^0.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "google-auth-library": "^5.1.1",
     "graphql": "^14.4.2",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^7.12.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.12.0"
+    "sequelize": "^5.12.0",
+    "sequelize-cli": "^5.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "eslint": "^6.1.0",
@@ -47,5 +52,12 @@
     "eslint-plugin-prettier": "^3.1.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
+  },
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.0"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
   }
 }

@@ -1,19 +1,32 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Expense = sequelize.define('Expense', {
-    id: {
-      allowNull: false,
-      unique: true,
-      primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4
+  const Expense = sequelize.define(
+    "Expense",
+    {
+      id: {
+        allowNull: false,
+        unique: true,
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
+      },
+      userId: {
+        allowNull: false,
+        unique: true,
+        primaryKey: true,
+        type: DataTypes.STRING
+      },
+      type: DataTypes.STRING,
+      quantity: DataTypes.INTEGER,
+      price: DataTypes.INTEGER
     },
-    type: DataTypes.STRING,
-    quantity: DataTypes.INTEGER,
-    price: DataTypes.INTEGER
-  }, {});
+    {}
+  );
   Expense.associate = function(models) {
-    // associations can be defined here
+    Expense.belongsTo(models.User, {
+      foreignKey: "userId",
+      onDelete: "CASCADE"
+    });
   };
   return Expense;
 };
