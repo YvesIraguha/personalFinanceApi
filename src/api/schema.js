@@ -6,16 +6,29 @@ const typeDefs = gql`
     type: String
     quantity: Int
     price: Int
+    owner: User
+  }
+  type User {
+    id: String
+    email: String
+    firstName: String
+    lastName: String
+    expenses: [Expense]
+  }
+  type Token {
+    token: String
   }
   type Query {
     getAllExpenses: [Expense!]!
     getExpense(id: String!): Expense
+    getUsers: [User]
   }
 
   type Mutation {
     createExpense(type: String!, quantity: Int, price: Int!): Expense!
     deleteExpense(id: String!): Expense
     updateExpense(id: String!, type: String, quantity: Int, price: Int): Expense
+    createUser(accessToken: String): Token!
   }
 `;
 
