@@ -1,5 +1,4 @@
 import axios from "axios";
-import errorHandler from "../middlewares/errorHandler";
 import { createJwtToken } from "../helpers/createToken";
 const resolvers = {
   Query: {
@@ -7,12 +6,12 @@ const resolvers = {
       const { id: userId } = user;
       return models.Expense.findAll({ where: { userId } });
     },
-    async getExpense(root, { id }, { models, user }) {
-      const { id: userId } = user;
+    async getExpense(root, { id }, { models }) {
       const expense = await models.Expense.findOne({
-        where: { id, userId },
-        include: [{ model: models.User, attributes: ["firstName", "lastName"] }]
+        where: { id }
       });
+      const owner = await expense.getUser();
+
       return expense;
     },
     async getUsers(root, args, { models }) {
@@ -23,7 +22,7 @@ const resolvers = {
   Mutation: {
     async createExpense(root, { type, quantity, price }, { models, user }) {
       const { id: userId } = user;
-
+      console.log("id", userId);
       return models.Expense.create({
         type,
         quantity,
