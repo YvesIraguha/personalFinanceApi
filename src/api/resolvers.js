@@ -10,19 +10,20 @@ const resolvers = {
       const expense = await models.Expense.findOne({
         where: { id }
       });
-      const owner = await expense.getUser();
-
       return expense;
     },
     async getUsers(root, args, { models }) {
       const users = await models.User.findAll();
       return users;
+    },
+    async getUser(root, args, { models }) {
+      const user = await models.User.findOne({ where: { id: args.id } });
+      return user;
     }
   },
   Mutation: {
     async createExpense(root, { type, quantity, price }, { models, user }) {
       const { id: userId } = user;
-      console.log("id", userId);
       return models.Expense.create({
         type,
         quantity,
@@ -68,6 +69,18 @@ const resolvers = {
       }
       const token = await createJwtToken(user.dataValues);
       return { token };
+    }
+  },
+  Expense: {
+    async owner(expense) {
+      const user = await expense.getUser();
+      return user;
+    }
+  },
+  User: {
+    async expenses(user) {
+      const expense = await user.getExpenses();
+      return expense;
     }
   }
 };

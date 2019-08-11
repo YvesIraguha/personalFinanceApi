@@ -22,6 +22,7 @@ const typeDefs = gql`
     getAllExpenses: [Expense!]!
     getExpense(id: String!): Expense
     getUsers: [User]
+    getUser(id: String!): User
   }
 
   type Mutation {
