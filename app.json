@@ -1,0 +1,25 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "description": "MyBudget-backend is a node application which help a user to record expenses as they occur in real time.",
+  "env": {
+    "DATABASE_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "MyBudget-backend",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
