@@ -4,30 +4,30 @@ import ExpenseController from "../data/expenses";
 
 const resolvers = {
   Query: {
-    async getAllExpenses(root, args, { models, token }) {
+    async getAllExpenses(root, args, { token }) {
       return ExpenseController.getAllExpenses(token);
     },
-    async getExpense(root, { id }, { models }) {
+    async getExpense(root, { id }) {
       return ExpenseController.getExpense(id);
     },
-    async getUsers(root, args, { models }) {
+    async getUsers(root) {
       return UserController.getUsers();
     },
-    async getUser(root, { id }, { models }) {
+    async getUser(root, { id }) {
       return UserController.getUser(id);
     }
   },
   Mutation: {
-    async createExpense(root, { type, quantity, price }, { models, token }) {
+    async createExpense(root, { type, quantity, price }, { token }) {
       return ExpenseController.createExpense(type, quantity, price, token);
     },
-    async deleteExpense(root, { id }, { models, token }) {
+    async deleteExpense(root, { id }, { token }) {
       return ExpenseController.deleteExpense(id, token);
     },
-    async updateExpense(root, { id, ...rest }, { models, token }) {
+    async updateExpense(root, { id, ...rest }, { token }) {
       return ExpenseController.updateExpense(id, rest, token);
     },
-    async createUser(root, { accessToken }, { models }) {
+    async createUser(root, { accessToken }) {
       const profileData = await axios.get(
         "https://www.googleapis.com/userinfo/v2/me",
         {
