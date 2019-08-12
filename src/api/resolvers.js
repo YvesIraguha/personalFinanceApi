@@ -1,8 +1,9 @@
 import axios from "axios";
-import { createJwtToken } from "../helpers/createToken";
+import { createJwtToken, decodeToken } from "../helpers/createToken";
 const resolvers = {
   Query: {
-    async getAllExpenses(root, args, { models, user }) {
+    async getAllExpenses(root, args, { models, token }) {
+      const user = await decodeToken(token);
       const { id: userId } = user;
       return models.Expense.findAll({ where: { userId } });
     },
@@ -22,7 +23,9 @@ const resolvers = {
     }
   },
   Mutation: {
-    async createExpense(root, { type, quantity, price }, { models, user }) {
+    async createExpense(root, { type, quantity, price }, { models, token }) {
+      const user = await decodeToken(token);
+      if (!user) throw new Error("You should be logged in");
       const { id: userId } = user;
       return models.Expense.create({
         type,
@@ -31,7 +34,9 @@ const resolvers = {
         userId
       });
     },
-    async deleteExpense(root, { id }, { models, user }) {
+    async deleteExpense(root, { id }, { models, token }) {
+      const user = await decodeToken(token);
+      if (!user) throw new Error("You should be logged in");
       const { id: userId } = user;
       const deleted = await models.Expense.destroy({
         where: { id, userId },
@@ -39,7 +44,9 @@ const resolvers = {
       });
       return deleted;
     },
-    async updateExpense(root, { id, ...rest }, { models, user }) {
+    async updateExpense(root, { id, ...rest }, { models, token }) {
+      const user = await decodeToken(token);
+      if (!user) throw new Error("You should be logged in");
       const { id: userId } = user;
       const updated = await models.Expense.update(rest, {
         where: { id, userId },

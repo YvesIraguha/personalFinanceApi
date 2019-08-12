@@ -13,9 +13,7 @@ const server = new ApolloServer({
   resolvers,
   context: async ({ req }) => {
     const token = req.headers.authorization || "";
-    const user = await decodeToken(token);
-    if (!user) throw new Error("You must be logged in");
-    return { models, user };
+    return { models, token };
   },
   introspection: true,
   playground: true
