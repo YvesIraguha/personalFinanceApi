@@ -1,8 +1,8 @@
-const errorHandler = async (data, callback) => {
+const errorHandler = async (callback, ...data) => {
   try {
-    await callback(data);
+    await callback(...data);
   } catch (error) {
-    return error;
+    throw new Error("Ooops something is not working properly over here");
   }
 };
 

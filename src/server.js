@@ -1,13 +1,10 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import dotenv from "dotenv";
-import typeDefs from "./api/schema";
-import resolvers from "./api/resolvers";
+import typeDefs from "./schemas";
+import resolvers from "./resolvers";
 import models from "../models";
-import { OAuth2Client } from "google-auth-library";
-import { decodeToken } from "./helpers/createToken";
-export const CLIENT_ID = process.env.CLIENT_ID;
-export const client = new OAuth2Client(CLIENT_ID);
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
