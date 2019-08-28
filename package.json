@@ -4,7 +4,7 @@
   "description": "The application for helping users to record their expenses on daily basis",
   "main": "server.js",
   "scripts": {
-    "test": "jest test",
+    "test": "mocha tests/*.test.js",
     "build": "babel src --out-dir ./dist --source-maps",
     "start": "node ./dist/server.js",
     "dev": "nodemon --exec babel-node ./src/server.js"
@@ -31,7 +31,6 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "google-auth-library": "^5.1.1",
-    "graphql": "^14.4.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.12.0",
     "pg-hstore": "^2.3.3",
@@ -45,13 +44,17 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
+    "chai": "^4.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
+    "graphql": "^14.4.2",
+    "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "supertest": "^4.0.2"
   },
   "engines": {
     "npm": "6.9.0",
