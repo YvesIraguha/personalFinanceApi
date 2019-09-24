@@ -3,6 +3,7 @@ import { gql } from "apollo-server-express";
 const typeDefs = gql`
   type Expense {
     id: String
+    createdAt: String
     type: String
     quantity: Int
     price: Int
@@ -11,6 +12,7 @@ const typeDefs = gql`
   type User {
     id: String
     email: String
+    createdAt: String
     firstName: String
     lastName: String
     expenses: [Expense]
@@ -22,6 +24,7 @@ const typeDefs = gql`
     getAllExpenses: [Expense!]!
     getExpense(id: String!): Expense
     getUsers: [User]
+    getUser(id: String!): User
   }
 
   type Mutation {
