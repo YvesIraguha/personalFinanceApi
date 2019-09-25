@@ -19,9 +19,6 @@ MyBudget-backend is an application that help users to record expenses so that th
 ## Prerequisites
 This project is built using `GraphQl` technology. It requires basic understanding of *GraphQl* queries and mutations. It leverages *Node.js*,*Express.js*, *Sequelize*,*Postgres*, and *JavaScript*. Basic understanding of these technologies will help to get up and running. 
 
-## Usage
-
-
 ## Contributing
 1. Fork the Project
 2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
