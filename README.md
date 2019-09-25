@@ -30,5 +30,5 @@ This project is built using `GraphQl` technology. It requires basic understandin
 ## License
 Distributed under the MIT License
 ## Contact
-Yves Iragua - [@yves_iraguha](https://twitter.com/yves_iraguha) - iraguhaivos@gmail.com
+Yves Iraguha - [@yves_iraguha](https://twitter.com/yves_iraguha) - iraguhaivos@gmail.com
 
