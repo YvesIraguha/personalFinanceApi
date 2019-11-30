@@ -1,17 +1,20 @@
-const chai = require("chai");
+import chai from "chai";
+import chaiHttp from "chai-http";
+import { app } from "../src/server";
 
+chai.use(chaiHttp);
 const expect = chai.expect;
-const url = `http://localhost:4000`;
-const request = require("supertest")(url);
+const url = `http://localhost:4000/`;
 
 describe("GraphQL", () => {
   it("Returns user with id = 10", done => {
-    request
+    chai
+      .request(app)
       .post("/graphql")
       .send({ query: "{ getUser(id: 10) { firstName } }" })
-      .expect(200)
       .end((err, res) => {
         // res will contain array with one user
+
         if (err) return done(err);
         res.body.user.should.have.property("id");
         res.body.user.should.have.property("name");
@@ -20,17 +23,16 @@ describe("GraphQL", () => {
         done();
       });
   });
-
-  it("Returns all users", done => {
-    request
-      .post("/graphql")
-      .send({ query: "{ user { id name username email } }" })
-      .expect(200)
-      .end((err, res) => {
-        // res will contain array of all users
-        if (err) return done(err);
-        // assume there are a 100 users in the database
-        res.body.user.should.have.lengthOf(100);
-      });
-  });
+  // it("Returns all users", done => {
+  //   request
+  //     .post("/graphql")
+  //     .send({ query: "{ user { id name username email } }" })
+  //     .expect(200)
+  //     .end((err, res) => {
+  //       // res will contain array of all users
+  //       if (err) return done(err);
+  //       // assume there are a 100 users in the database
+  //       res.body.user.should.have.lengthOf(100);
+  //     });
+  // });
 });

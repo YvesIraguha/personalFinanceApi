@@ -4,7 +4,7 @@
   "description": "The application for helping users to record their expenses on daily basis",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests/*.test.js",
+    "test": "mocha --require @babel/polyfill --require @babel/register tests/*.test.js --recursive --timeout 10000 --exit",
     "build": "babel src --out-dir ./dist --source-maps",
     "start": "node ./dist/server.js",
     "dev": "nodemon --exec babel-node ./src/server.js"
@@ -45,12 +45,13 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
-    "graphql": "^14.4.2",
+    "graphql": "^14.5.8",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",

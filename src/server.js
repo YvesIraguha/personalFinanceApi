@@ -20,7 +20,7 @@ const server = new ApolloServer({
   introspection: true,
   playground: true
 });
-const app = express();
+export const app = express();
 server.applyMiddleware({ app });
 
 const PORT = process.env.PORT || 4000;
