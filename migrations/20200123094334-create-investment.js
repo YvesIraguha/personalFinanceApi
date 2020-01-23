@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Expenses", {
+    return queryInterface.createTable("Investments", {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -12,17 +12,16 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      parentId: {
-        allowNull: true,
+      name: {
         type: Sequelize.STRING
       },
-      type: {
-        type: Sequelize.STRING
+      matureDate: {
+        type: Sequelize.DATE
       },
-      quantity: {
+      initialAmount: {
         type: Sequelize.INTEGER
       },
-      price: {
+      targetAmount: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -36,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Expenses");
+    return queryInterface.dropTable("Investments");
   }
 };

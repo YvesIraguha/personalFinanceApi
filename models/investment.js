@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Expense = sequelize.define(
-    "Expense",
+  const Investment = sequelize.define(
+    "Investment",
     {
       id: {
         allowNull: false,
@@ -10,29 +10,25 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4
       },
+      name: DataTypes.STRING,
+      matureDate: DataTypes.DATE,
+      initialAmount: DataTypes.INTEGER,
+      targetAmount: DataTypes.INTEGER,
       userId: {
-        allowNull: false,
         type: DataTypes.STRING
-      },
-      parentId: {
-        allowNull: true,
-        type: DataTypes.STRING
-      },
-      type: DataTypes.STRING,
-      quantity: DataTypes.INTEGER,
-      price: DataTypes.INTEGER
+      }
     },
     {}
   );
-  Expense.associate = function(models) {
-    Expense.belongsTo(models.User, {
+  Investment.associate = function(models) {
+    Investment.belongsTo(models.User, {
       foreignKey: "userId",
       onDelete: "CASCADE"
     });
-    Expense.belongsTo(models.Investment, {
+    Investment.hasMany(models.Expense, {
       foreignKey: "parentId",
       onDelete: "CASCADE"
     });
   };
-  return Expense;
+  return Investment;
 };

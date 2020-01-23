@@ -1,6 +1,5 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
-import dotenv from "dotenv";
 import typeDefs from "./schemas";
 import resolvers from "./resolvers";
 import models from "../models";
