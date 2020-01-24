@@ -8,6 +8,17 @@ const typeDefs = gql`
     quantity: Int
     price: Int
     owner: User
+    parentId: String
+  }
+  type Investment {
+    id: String
+    createdAt: String!
+    matureDate: String!
+    name: String!
+    initialAmount: Int!
+    targetAmount: Int!
+    expenses: [Expense]
+    owner: User
   }
   type User {
     id: String
@@ -16,6 +27,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     expenses: [Expense]
+    investments: [Investment]
   }
   type Token {
     token: String
@@ -25,13 +37,34 @@ const typeDefs = gql`
     getExpense(id: String!): Expense
     getUsers: [User]
     getUser(id: String!): User
+    getAllInvestments: [Investment!]!
+    getInvestment(id: String!): Investment
   }
 
   type Mutation {
-    createExpense(type: String!, quantity: Int, price: Int!): Expense!
+    createExpense(
+      type: String!
+      quantity: Int
+      price: Int!
+      parentId: String
+    ): Expense!
     deleteExpense(id: String!): Expense
     updateExpense(id: String!, type: String, quantity: Int, price: Int): Expense
     createUser(accessToken: String): Token!
+    createInvestment(
+      name: String!
+      matureDate: String!
+      initialAmount: Int!
+      targetAmount: Int!
+    ): Investment!
+    deleteInvestment(id: String!): Investment
+    updateInvestment(
+      id: String!
+      name: String
+      matureDate: String
+      initialAmount: Int
+      targetAmount: Int
+    ): Investment
   }
 `;
 

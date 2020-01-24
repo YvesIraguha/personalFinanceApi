@@ -2,3 +2,4 @@ migrations/*
 seeders/*
 models/*
 dist/*
+package-lock.json
