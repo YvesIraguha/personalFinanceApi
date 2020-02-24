@@ -11,7 +11,10 @@ class ExpenseController {
   static async getAllExpenses(token) {
     const user = await decodeToken(token);
     const { id: userId } = user;
-    const expenses = await models.Expense.findAll({ where: { userId } });
+    const expenses = await models.Expense.findAll({
+      where: { userId },
+      order: [["createdAt", "DESC"]]
+    });
     return expenses;
   }
 
