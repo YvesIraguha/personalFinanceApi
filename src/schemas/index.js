@@ -12,11 +12,11 @@ const typeDefs = gql`
   }
   type Investment {
     id: String
-    createdAt: String!
-    matureDate: String!
-    name: String!
-    initialAmount: Int!
-    targetAmount: Int!
+    createdAt: String
+    matureDate: String
+    name: String
+    initialAmount: Int
+    targetAmount: Int
     expenses: [Expense]
     owner: User
   }
