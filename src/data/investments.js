@@ -12,7 +12,6 @@ class InvestmentController {
     const user = await decodeToken(token);
     const { id: userId } = user;
     const investments = await models.Investment.findAll({ where: { userId } });
-
     return investments;
   }
 
