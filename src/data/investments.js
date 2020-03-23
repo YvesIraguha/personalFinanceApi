@@ -11,7 +11,10 @@ class InvestmentController {
   static async getAllInvestments(token) {
     const user = await decodeToken(token);
     const { id: userId } = user;
-    const investments = await models.Investment.findAll({ where: { userId } });
+    const investments = await models.Investment.findAll({
+      where: { userId },
+      order: [["createdAt", "DESC"]]
+    });
     return investments;
   }
 
