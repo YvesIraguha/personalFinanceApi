@@ -45,7 +45,7 @@ const resolvers = {
     },
     async createInvestment(
       root,
-      { name, matureDate, initialAmount, targetAmount },
+      { name, matureDate, initialAmount, targetAmount, pictureUrl },
       { token }
     ) {
       return InvestmentController.createInvestment(
@@ -53,6 +53,7 @@ const resolvers = {
         matureDate,
         initialAmount,
         targetAmount,
+        pictureUrl,
         token
       );
     },

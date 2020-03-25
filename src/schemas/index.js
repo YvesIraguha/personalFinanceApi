@@ -14,6 +14,7 @@ const typeDefs = gql`
     id: String
     createdAt: String
     matureDate: String
+    pictureUrl: String
     name: String
     initialAmount: Int
     targetAmount: Int
@@ -53,6 +54,7 @@ const typeDefs = gql`
     createUser(accessToken: String): Token!
     createInvestment(
       name: String!
+      pictureUrl: String
       matureDate: String!
       initialAmount: Int!
       targetAmount: Int!

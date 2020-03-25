@@ -23,6 +23,7 @@ class InvestmentController {
     matureDate,
     initialAmount,
     targetAmount,
+    pictureUrl,
     token
   ) {
     const user = await decodeToken(token);
@@ -33,6 +34,7 @@ class InvestmentController {
       matureDate,
       initialAmount,
       targetAmount,
+      pictureUrl,
       userId
     });
   }

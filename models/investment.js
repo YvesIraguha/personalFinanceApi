@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       matureDate: DataTypes.DATE,
       initialAmount: DataTypes.INTEGER,
       targetAmount: DataTypes.INTEGER,
+      pictureUrl: DataTypes.STRING,
       userId: {
         type: DataTypes.STRING
       }
