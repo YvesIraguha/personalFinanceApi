@@ -17,8 +17,8 @@ const resolvers = {
     async getUser(root, { id }) {
       return UserController.getUser(id);
     },
-    async getAllInvestments(root, args, { token }) {
-      return InvestmentController.getAllInvestments(token);
+    async getAllInvestments(root, { startDate, endDate }, { token }) {
+      return InvestmentController.getAllInvestments(token, startDate, endDate);
     },
     async getInvestment(root, { id }) {
       return InvestmentController.getInvestment(id);

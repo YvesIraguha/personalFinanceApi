@@ -39,7 +39,7 @@ const typeDefs = gql`
     getExpense(id: String!): Expense
     getUsers: [User]
     getUser(id: String!): User
-    getAllInvestments: [Investment!]!
+    getAllInvestments(startDate: String, endDate: String): [Investment!]!
     getInvestment(id: String!): Investment
   }
 
