@@ -13,10 +13,22 @@ class UserController {
   }
 
   static async createUser({ data }) {
-    const { id, email, family_name: firstName, given_name: lastName } = data;
+    const {
+      id,
+      email,
+      family_name: firstName,
+      given_name: lastName,
+      picture: profilePictureUrl
+    } = data;
     const user = await models.User.findOne({ where: { id } });
     if (!user) {
-      const newUser = await models.User.create({ id, email, firstName, lastName });
+      const newUser = await models.User.create({
+        id,
+        email,
+        firstName,
+        lastName,
+        profilePictureUrl
+      });
       const token = await createJwtToken(newUser.dataValues);
       return { token };
     }

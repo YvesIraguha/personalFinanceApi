@@ -27,6 +27,7 @@ const typeDefs = gql`
     createdAt: String
     firstName: String
     lastName: String
+    profilePictureUrl: String
     expenses: [Expense]
     investments: [Investment]
   }
