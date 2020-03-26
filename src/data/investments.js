@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import models from "../../models";
 import { decodeToken } from "../helpers/authentication";
 
@@ -8,13 +9,30 @@ class InvestmentController {
     });
     return investment;
   }
-  static async getAllInvestments(token) {
+  static async getAllInvestments(token, startDate, endDate) {
     const user = await decodeToken(token);
     const { id: userId } = user;
-    const investments = await models.Investment.findAll({
-      where: { userId },
-      order: [["createdAt", "DESC"]]
-    });
+    let investments;
+    if (startDate && endDate) {
+      investments = await models.Investment.findAll({
+        where: {
+          userId,
+          createdAt: {
+            [Op.between]: [
+              new Date(parseInt(startDate, 10)),
+              new Date(parseInt(endDate, 10))
+            ]
+          }
+        },
+        order: [["createdAt", "DESC"]]
+      });
+    } else {
+      investments = await models.Investment.findAll({
+        where: { userId },
+        order: [["createdAt", "DESC"]]
+      });
+    }
+
     return investments;
   }
 
@@ -23,6 +41,7 @@ class InvestmentController {
     matureDate,
     initialAmount,
     targetAmount,
+    pictureUrl,
     token
   ) {
     const user = await decodeToken(token);
@@ -33,6 +52,7 @@ class InvestmentController {
       matureDate,
       initialAmount,
       targetAmount,
+      pictureUrl,
       userId
     });
   }

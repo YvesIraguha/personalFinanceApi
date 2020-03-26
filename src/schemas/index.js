@@ -14,6 +14,7 @@ const typeDefs = gql`
     id: String
     createdAt: String
     matureDate: String
+    pictureUrl: String
     name: String
     initialAmount: Int
     targetAmount: Int
@@ -26,6 +27,7 @@ const typeDefs = gql`
     createdAt: String
     firstName: String
     lastName: String
+    profilePictureUrl: String
     expenses: [Expense]
     investments: [Investment]
   }
@@ -37,7 +39,7 @@ const typeDefs = gql`
     getExpense(id: String!): Expense
     getUsers: [User]
     getUser(id: String!): User
-    getAllInvestments: [Investment!]!
+    getAllInvestments(startDate: String, endDate: String): [Investment!]!
     getInvestment(id: String!): Investment
   }
 
@@ -53,6 +55,7 @@ const typeDefs = gql`
     createUser(accessToken: String): Token!
     createInvestment(
       name: String!
+      pictureUrl: String
       matureDate: String!
       initialAmount: Int!
       targetAmount: Int!
