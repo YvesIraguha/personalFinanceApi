@@ -19,8 +19,8 @@ class InvestmentController {
           userId,
           createdAt: {
             [Op.between]: [
-              new Date(parseInt(startDate, 10)),
-              new Date(parseInt(endDate, 10))
+              new Date(startDate).getTime(),
+              new Date(endDate).getTime()
             ]
           }
         },
@@ -32,7 +32,6 @@ class InvestmentController {
         order: [["createdAt", "DESC"]]
       });
     }
-
     return investments;
   }
 

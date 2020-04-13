@@ -1,4 +1,3 @@
-
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -23,9 +22,11 @@ module.exports = {
     logging: false
   },
   production: {
-    use_env_variable: "DATABASE_URL"
+    use_env_variable: "DATABASE_URL",
+    logging: false
   },
   staging: {
-    use_env_variable: "DATABASE_URL"
+    use_env_variable: "DATABASE_URL",
+    logging: false
   }
 };
