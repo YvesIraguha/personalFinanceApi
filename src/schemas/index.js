@@ -15,6 +15,7 @@ const typeDefs = gql`
     createdAt: String
     matureDate: String
     pictureUrl: String
+    status: String
     name: String
     initialAmount: Int
     targetAmount: Int
@@ -67,6 +68,7 @@ const typeDefs = gql`
       matureDate: String
       initialAmount: Int
       targetAmount: Int
+      status: String
     ): Investment
   }
 `;

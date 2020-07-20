@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       initialAmount: DataTypes.INTEGER,
       targetAmount: DataTypes.INTEGER,
       pictureUrl: DataTypes.STRING,
+      status: {
+        type: DataTypes.ENUM,
+        values: ["active", "late", "paid"],
+        defaultValue: "active"
+      },
       userId: {
         type: DataTypes.STRING
       }
